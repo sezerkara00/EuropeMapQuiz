@@ -36,19 +36,24 @@ def display_existing_countries():
     try:
         with open("day25_avrupaOyunu/countries_coordinates.csv") as file:
             for line in file:
-                # Satırı kontrol et
                 if line.strip():  # Eğer satır boş değilse
                     parts = line.strip().split(",")
                     if len(parts) == 3:  # Eğer üç parçaya ayrılabiliyorsa
                         country_name, x, y = parts
-                        # Yazıyı belirtilen koordinatta yazdır
-                        yazici = turtle.Turtle()
-                        yazici.hideturtle()  # Turtle'ı gizle
-                        yazici.penup()
-                        yazici.goto(float(x), float(y))  # Koordinatlara git
-                        yazici.pendown()
-                        yazici.color("black")  # Yazı rengi
-                        yazici.write(country_name, align="center", font=("Arial", 18, "bold"))  # Yazıyı yazdır
+                        try:
+                            # Koordinatları float'a dönüştürmeden önce kontrol et
+                            x_float = float(x)
+                            y_float = float(y)
+                            # Yazıyı belirtilen koordinatta yazdır
+                            yazici = turtle.Turtle()
+                            yazici.hideturtle()  # Turtle'ı gizle
+                            yazici.penup()
+                            yazici.goto(x_float, y_float)  # Koordinatlara git
+                            yazici.pendown()
+                            yazici.color("black")  # Yazı rengi
+                            yazici.write(country_name, align="center", font=("Arial", 18, "bold"))  # Yazıyı yazdır
+                        except ValueError:
+                            print(f"Hatalı koordinat: x={x}, y={y}")  # Hatalı koordinatları yazdır
     except FileNotFoundError:
         print("CSV dosyası bulunamadı. Henüz ülke eklenmemiş olabilir.")
 
