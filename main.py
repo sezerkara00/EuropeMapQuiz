@@ -4,7 +4,8 @@ import pandas
 # Ekranı oluştur
 screen = turtle.Screen()
 screen.title("Europe Map")
-image = "C:/Users/sezer/Desktop/udemy/py/day25_avrupaOyunu/Avrupa.gif"  # Avrupa haritasının yolu
+image = "/home/pinar/Downloads/deneme_surum/fluiddv1_121212/sezerkara00-EuropeMapQuiz-de28d49/Avrupa.gif" 
+/Avrupa.gif"  # Avrupa haritasının yolu
 screen.addshape(image)
 turtle.shape(image)
 
